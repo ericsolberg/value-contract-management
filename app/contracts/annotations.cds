@@ -1,122 +1,126 @@
 using ValueContractService as service from '../../srv/service';
+
 annotate service.ValueContracts with @(
-    UI.FieldGroup #GeneratedGroup : {
-        $Type : 'UI.FieldGroupType',
+    UI.HeaderInfo                : {
+        TypeName      : 'Value Contract',
+        TypeNamePlural: 'Value Contracts',
+        Title         : {
+            $Type: 'UI.DataField',
+            Value: contractNumber
+        },
+        Description   : {
+            $Type: 'UI.DataField',
+            Value: customer.name
+        },
+        ImageUrl : 'assets/ContractIcon.png',
+    },
+    UI.FieldGroup #GeneratedGroup: {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : contractNumber,
+                $Type: 'UI.DataField',
+                Value: contractNumber,
             },
             {
-                $Type : 'UI.DataField',
-                Value : contractValue,
+                $Type: 'UI.DataField',
+                Value: contractValue,
             },
             {
-                $Type : 'UI.DataField',
-                Value : totalSpend,
+                $Type: 'UI.DataField',
+                Value: totalSpend,
             },
             {
-                $Type : 'UI.DataField',
-                Value : status,
+                $Type: 'UI.DataField',
+                Value: status,
             },
             {
-                $Type : 'UI.DataField',
-                Value : startDate,
+                $Type: 'UI.DataField',
+                Value: startDate,
             },
             {
-                $Type : 'UI.DataField',
-                Value : endDate,
+                $Type: 'UI.DataField',
+                Value: endDate,
             },
             {
-                $Type : 'UI.DataField',
-                Value : creditStatus,
+                $Type: 'UI.DataField',
+                Value: creditStatus,
             },
             {
-                $Type : 'UI.DataField',
-                Value : lastCreditCheck,
+                $Type: 'UI.DataField',
+                Value: lastCreditCheck,
             },
         ],
     },
-    UI.FieldGroup #ProspectReport : {
-        $Type : 'UI.FieldGroupType',
-        Data : [
-            {
-                $Type : 'UI.DataField',
-                Value : prospectReport,
-                ![@UI.Visualization] : {
-                    $Type : 'UI.Visualization',
-                    Qualifier : 'CustomHTMLContent',
-                    Value : prospectReport,
-                },
-                ![@UI.MultiLineText] : true,
-            },
-        ],
-    },
-    UI.Facets : [
+    UI.Facets                    : [{
+        $Type : 'UI.ReferenceFacet',
+        ID    : 'GeneratedFacet1',
+        Label : 'General Information',
+        Target: '@UI.FieldGroup#GeneratedGroup',
+    }, ],
+    UI.LineItem                  : [
         {
-            $Type : 'UI.ReferenceFacet',
-            ID : 'GeneratedFacet1',
-            Label : 'General Information',
-            Target : '@UI.FieldGroup#GeneratedGroup',
+            $Type: 'UI.DataField',
+            Value: contractNumber,
+            Label: 'Contract Number',
         },
         {
-            $Type : 'UI.ReferenceFacet',
-            ID : 'ProspectReportFacet',
-            Label : 'Prospect Report',
-            Target : '@UI.FieldGroup#ProspectReport',
-            ![@UI.Importance] : #High,
-            ![@UI.IsPartOfPreview] : false,
-        },
-    ],
-    UI.LineItem : [
-        {
-            $Type : 'UI.DataField',
-            Value : contractNumber,
+            $Type: 'UI.DataField',
+            Value: contractValue,
+            Label: 'Contract Value',
         },
         {
-            $Type : 'UI.DataField',
-            Value : contractValue,
+            $Type: 'UI.DataField',
+            Value: totalSpend,
+            Label: 'Total Spend',
         },
         {
-            $Type : 'UI.DataField',
-            Value : totalSpend,
+            $Type: 'UI.DataField',
+            Value: status,
+            Label: 'Status',
         },
         {
-            $Type : 'UI.DataField',
-            Value : status,
+            $Type: 'UI.DataField',
+            Value: startDate,
+            Label: 'Start Date',
         },
         {
-            $Type : 'UI.DataField',
-            Value : startDate,
+            $Type: 'UI.DataField',
+            Value: endDate,
+            Label: 'End Date',
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: creditStatus,
+            Label: 'Credit Status',
         },
     ],
 );
 
 annotate service.ValueContracts with {
-    customer @Common.ValueList : {
-        $Type : 'Common.ValueListType',
-        CollectionPath : 'KeyCustomers',
-        Parameters : [
+    customer @Common.ValueList: {
+        $Type         : 'Common.ValueListType',
+        CollectionPath: 'KeyCustomers',
+        Parameters    : [
             {
-                $Type : 'Common.ValueListParameterInOut',
-                LocalDataProperty : customer_ID,
-                ValueListProperty : 'ID',
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: customer_ID,
+                ValueListProperty: 'ID',
             },
             {
-                $Type : 'Common.ValueListParameterDisplayOnly',
-                ValueListProperty : 'customerNumber',
+                $Type            : 'Common.ValueListParameterDisplayOnly',
+                ValueListProperty: 'customerNumber',
             },
             {
-                $Type : 'Common.ValueListParameterDisplayOnly',
-                ValueListProperty : 'name',
+                $Type            : 'Common.ValueListParameterDisplayOnly',
+                ValueListProperty: 'name',
             },
             {
-                $Type : 'Common.ValueListParameterDisplayOnly',
-                ValueListProperty : 'industry',
+                $Type            : 'Common.ValueListParameterDisplayOnly',
+                ValueListProperty: 'industry',
             },
             {
-                $Type : 'Common.ValueListParameterDisplayOnly',
-                ValueListProperty : 'riskCategory',
+                $Type            : 'Common.ValueListParameterDisplayOnly',
+                ValueListProperty: 'riskCategory',
             },
         ],
     }

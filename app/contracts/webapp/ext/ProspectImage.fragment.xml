@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+  <!-- Use module path (~<sap.app.id> with dots → slashes) so it works in sandbox and prod -->
+  <Image
+    id="prospectReportImg"
+    src="assets/prospect-report.jpg"
+    width="100%"
+    densityAware="false" />
+</core:FragmentDefinition>
