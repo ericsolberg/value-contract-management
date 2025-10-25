@@ -24,6 +24,7 @@ entity ValueContracts : cuid, managed {
   endDate        : Date @title: 'End Date';
   creditStatus   : String(20) @title: 'Credit Status' @values: ['Pending', 'Approved', 'Rejected', 'Under Review'] default 'Pending';
   lastCreditCheck: DateTime @title: 'Last Credit Check';
+  prospectReport : LargeString @title: 'Prospect Report';
   
   // Navigation
   assessments    : Composition of many CreditAssessments on assessments.contract = $self;

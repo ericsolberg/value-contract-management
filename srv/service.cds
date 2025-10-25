@@ -1,6 +1,16 @@
 using { valuecontract.db as db } from '../db/schema';
+using { S4HANASalesContractAPI } from './external-services/s4hana-sales-contract-api';
 
 service ValueContractService {
+  // Mirror entity for S4HANASalesContractAPI.SalesContracts
+  @cds.persistence.skip
+  entity ExternalSalesContracts {
+    key ID : UUID;
+    contractId : String;
+    customerId : String;
+    totalAmount : Decimal;
+    status : String;
+  }
   
   // Key Customers management
   entity KeyCustomers as projection on db.KeyCustomers {
@@ -47,6 +57,14 @@ service ValueContractService {
     riskCategory: String;
     creditStatus: String;
   };
+
+  // Function to fetch sales contracts from S/4HANA
+  function fetchS4HANASalesContracts() returns array of ExternalSalesContracts;
+}
+
+// Extend the S4HANASalesContractAPI service
+extend service S4HANASalesContractAPI with {
+  action syncSalesContracts() returns String;
 }
 
 // Administrative service for managing master data
