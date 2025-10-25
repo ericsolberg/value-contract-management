@@ -37,12 +37,35 @@ annotate service.ValueContracts with @(
             },
         ],
     },
+    UI.FieldGroup #ProspectReport : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : prospectReport,
+                ![@UI.Visualization] : {
+                    $Type : 'UI.Visualization',
+                    Qualifier : 'CustomHTMLContent',
+                    Value : prospectReport,
+                },
+                ![@UI.MultiLineText] : true,
+            },
+        ],
+    },
     UI.Facets : [
         {
             $Type : 'UI.ReferenceFacet',
             ID : 'GeneratedFacet1',
             Label : 'General Information',
             Target : '@UI.FieldGroup#GeneratedGroup',
+        },
+        {
+            $Type : 'UI.ReferenceFacet',
+            ID : 'ProspectReportFacet',
+            Label : 'Prospect Report',
+            Target : '@UI.FieldGroup#ProspectReport',
+            ![@UI.Importance] : #High,
+            ![@UI.IsPartOfPreview] : false,
         },
     ],
     UI.LineItem : [
@@ -98,4 +121,3 @@ annotate service.ValueContracts with {
         ],
     }
 };
-

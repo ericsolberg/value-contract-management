@@ -4,6 +4,20 @@ specVersion: "3.1"
 metadata:
   name: valuecontract.contracts.contracts
 type: application
+framework:
+  name: SAPUI5
+  version: "1.136.0"
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+    - name: sap.ushell
+    - name: sap.fe.templates
+    - name: themelib_sap_horizon
+builder:
+  resources:
+    excludes:
+      - "/test/**"
+      - "/localService/**"
 server:
   customMiddleware:
     - name: fiori-tools-proxy
@@ -19,5 +33,5 @@ server:
       afterMiddleware: compression
       configuration:
         port: 35729
-        path: webapp
+        path: dist
         delay: 300

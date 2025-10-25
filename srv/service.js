@@ -33,12 +33,22 @@ module.exports = cds.service.impl(async function() {
 
     this.on('getCustomerRiskSummary', async (req) => {
         const { customerID } = req.data;
-        // Implement risk summary calculation logic here
+        const contracts = await SELECT.from(ValueContracts).where({ customer_ID: customerID });
+        const totalContracts = contracts.length;
+        const totalValue = contracts.reduce((sum, contract) => sum + contract.contractValue, 0);
+        
+        let riskCategory = 'Low';
+        if (totalValue > 2000000) riskCategory = 'High';
+        else if (totalValue > 1000000) riskCategory = 'Medium';
+
+        const activeContracts = contracts.filter(contract => contract.status === 'Active');
+        const creditStatus = activeContracts.every(contract => contract.creditStatus === 'Approved') ? 'Good' : 'Under Review';
+
         return {
-            totalContracts: 0,
-            totalValue: 0,
-            riskCategory: 'Low',
-            creditStatus: 'Good'
+            totalContracts,
+            totalValue,
+            riskCategory,
+            creditStatus
         };
     });
 
