@@ -24,7 +24,6 @@ modules:
         properties:
           srv-url: ${default-url}
     requires:
-<<<<<<< HEAD
       - name: ValueContractManagement-db
 
   - name: ValueContractManagement-db-deployer
@@ -41,9 +40,3 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
-=======
-      []
-
-resources:
-  []
->>>>>>> 9e8f5666c18a8bbbf6db1b351d71e2e2e46761f3
