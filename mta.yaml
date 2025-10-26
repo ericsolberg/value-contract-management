@@ -25,6 +25,7 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: ValueContractManagement-db
+      - name: ValueContractManagement-auth
 
   - name: ValueContractManagement-db-deployer
     type: hdb
@@ -40,3 +41,12 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
+  - name: ValueContractManagement-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: ValueContractManagement-${org}-${space}
+        tenant-mode: dedicated

@@ -6,7 +6,8 @@
     "@cap-js/hana": "^2",
     "@sap/cds": "^9",
     "axios": "^1.12.2",
-    "express": "^4"
+    "express": "^4",
+    "@sap/xssec": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2",
@@ -29,7 +30,8 @@
   "cds": {
     "requires": {
       "[production]": {
-        "db": "hana"
+        "db": "hana",
+        "auth": "xsuaa"
       }
     }
   }
