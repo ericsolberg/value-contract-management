@@ -20,6 +20,7 @@ service ValueContractService {
   };
   
   // Value Contracts management  
+  @odata.draft.enabled
   entity ValueContracts as projection on db.ValueContracts {
     *,
     customer : redirected to KeyCustomers,
