@@ -64,9 +64,11 @@ annotate service.ValueContracts with @(
             Label: 'Contract Number',
         },
         {
-            $Type: 'UI.DataField',
-            Value: contractValue,
-            Label: 'Contract Value',
+            $Type : 'UI.DataField',
+            Label : 'contractValue',
+            Value : contractValue,
+            Criticality : {$edmJson: {$If: [{$Gt: [{$Path: 'contractValue'}, 500000]}, 1, 3]}},
+            CriticalityRepresentation : #WithIcon,
         },
         {
             $Type: 'UI.DataField',
@@ -125,3 +127,11 @@ annotate service.ValueContracts with {
         ],
     }
 };
+annotate service.ValueContracts with {
+    status @Common.FieldControl : #ReadOnly
+};
+
+annotate service.ValueContracts with {
+    creditStatus @Common.FieldControl : #ReadOnly
+};
+

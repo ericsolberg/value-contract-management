@@ -9,7 +9,7 @@
     >
         <Toolbar id="toolbar1" width="600px">
             <Title
-                text="Generated Oct 24, 2025"
+                text="Generated November 4, 2025"
                 level="H3"
                 id="title1"
             />
@@ -17,7 +17,7 @@
             <!-- Open in new tab / download -->
             <Link
                 text="Download PDF"
-                href="assets/prospect-report.pdf"
+                href="assets/prospect-report-after.pdf"
                 target="_blank"
                 icon="sap-icon://download"
                 id="dl1"
@@ -28,7 +28,7 @@
             id="prospectPdfFrame"
             sanitizeContent="false"
             content="&lt;iframe
-               src='assets/prospect-report.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=1'
+               src='assets/prospect-report-after.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=1'
                style='border:0;width:600px;height:600px;'
                loading='lazy'&gt;&lt;/iframe&gt;"
         />
