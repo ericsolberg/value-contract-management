@@ -1,7 +1,7 @@
 {
   "_version": "1.73.1",
   "sap.app": {
-    "id": "valuecontract.contracts.contracts",
+    "id": "valuecontract.contracts.contracts",    
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -118,6 +118,15 @@
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
                     "type": "ResponsiveTable"
+                  },
+                  "actions": {
+                    "credCheck": {
+                      "press": "valuecontract.contracts.contracts.ext.controller.ListReport.onCreditCheckPress",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Do the Credit Check"
+                    }
                   }
                 }
               },

@@ -8,6 +8,29 @@ module.exports = cds.service.impl(async function() {
     console.log('S4HANAService methods:', Object.getOwnPropertyNames(S4HANAService));
     console.log('S4HANAService entities:', S4HANAService.entities);
 
+    this.on('performCreditCheck', ValueContracts, async (req) => {
+        //const { newStatus, comments } = req.data;
+        const contractId = req.params[0].ID || req.params[0];
+                
+        // Get the current  record
+        const contract = await SELECT.one.from(ValueContracts).where({ ID: contractId });
+        if (!contract) {
+            req.error(404, 'Value Contract not found');
+        }
+        console.log(`Performing Prospect Research Agent check for contract ID: ${contractId}`);
+        // Implement credit check logic here
+
+        const updated = await UPDATE(ValueContracts).set({ status: 'Approved' }).where({ ID: contractId })
+        
+        console.log(`Prospect Research Agent check performed for contract ID: ${contractId}`);
+
+        //await new Promise(r => setTimeout(r, 5000));
+
+        req.info(`Prospect Research Agent check performed for contract ${contract.contractNumber}`);
+
+    });
+
+
     // Ensure the S4HANAService is properly connected
     if (!S4HANAService) {
         console.error('Failed to connect to S4HANASalesContractAPI');

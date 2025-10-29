@@ -26,8 +26,13 @@ service ValueContractService {
     customer : redirected to KeyCustomers,
     assessments : redirected to CreditAssessments,
     items : redirected to ContractItems
+  } actions {
+      action performCreditCheck() returns ValueContracts;
   };
   
+
+
+
   // Credit Profiles
   entity CreditProfiles as projection on db.CreditProfiles {
     *,
@@ -62,6 +67,7 @@ service ValueContractService {
   // Function to fetch sales contracts from S/4HANA
   function fetchS4HANASalesContracts() returns array of ExternalSalesContracts;
 }
+
 
 // Extend the S4HANASalesContractAPI service
 extend service S4HANASalesContractAPI with {
