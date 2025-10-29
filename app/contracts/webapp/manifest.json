@@ -124,7 +124,7 @@
                       "press": "valuecontract.contracts.contracts.ext.controller.ListReport.onCreditCheckPress",
                       "visible": true,
                       "enabled": true,
-                      "requiresSelection": false,
+                      "requiresSelection": true,
                       "text": "Do the Credit Check"
                     }
                   }
