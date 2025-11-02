@@ -13,6 +13,7 @@ annotate service.ValueContracts with @(
             Value: customer.name
         },
         ImageUrl : 'assets/ContractIcon.png',
+        
     },
     UI.FieldGroup #GeneratedGroup: {
         $Type: 'UI.FieldGroupType',
@@ -100,8 +101,14 @@ annotate service.ValueContracts with @(
             Label : 'Perform Credit Check (Action)',
             Action : 'ValueContractService.performCreditCheck',
         },
-
     ],
+    UI.Identification : [
+        {
+            $Type : 'UI.DataFieldForAction',
+            Label : 'Perform Credit Check (Action)',
+            Action : 'ValueContractService.performCreditCheck',
+        },
+    ]
 );
 
 annotate service.ValueContracts with {
