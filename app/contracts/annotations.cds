@@ -97,7 +97,7 @@ annotate service.ValueContracts with @(
         },
         {
             $Type : 'UI.DataFieldForAction',
-            Label : 'Perform Credit Check',
+            Label : 'Perform Credit Check (Action)',
             Action : 'ValueContractService.performCreditCheck',
         },
 

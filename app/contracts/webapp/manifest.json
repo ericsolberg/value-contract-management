@@ -125,7 +125,7 @@
                       "visible": true,
                       "enabled": true,
                       "requiresSelection": true,
-                      "text": "Do the Credit Check"
+                      "text": "Perform Credit Check (Custom Code)"
                     }
                   }
                 }
@@ -143,6 +143,16 @@
               "editableHeaderContent": false,
               "contextPath": "/ValueContracts",
               "content": {
+                "header": {
+                  "actions": {
+                    "credCheck": {
+                      "press": "valuecontract.contracts.contracts.ext.controller.ObjectPage.onCreditCheckPress",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "Perform Credit Analysis (Custom Code)"
+                    }
+                  }
+                },
                 "body": {
                   "sections": {
                     "ProspectReportNew": {
